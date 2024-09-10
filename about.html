@@ -119,6 +119,25 @@
             font-size: 24px;
             cursor: pointer;
         }
+        .fade-out {
+          opacity: 1;
+          transition: opacity 0.5s ease-out;
+        }
+        
+        .fade-out.active {
+          opacity: 0;
+        }
+        
+        /* For fading in on page load */
+        body {
+          opacity: 0;
+          transition: opacity 0.5s ease-in;
+        }
+        
+        body.loaded {
+          opacity: 1;
+        }
+
     </style>
     <title>About me</title>
 </head>
@@ -244,5 +263,27 @@
             openModal(currentIndex);
         });
     </script>
+<script>
+  // Fade in effect on page load
+  window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+  });
+
+  // Fade out effect before the page changes
+  document.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+
+      document.body.classList.remove('loaded');
+      document.body.classList.add('fade-out', 'active');
+
+      setTimeout(function() {
+        window.location.href = href;
+      }, 500); // Match the transition time
+    });
+  });
+</script>
+
 </body>
 </html>
