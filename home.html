@@ -95,8 +95,6 @@
         .modal-nav.right {
             right: 0;
         }
-
-        /* Close button */
         .close {
             position: absolute;
             top: 10px;
@@ -174,11 +172,16 @@
     <div class="cool-section">
         <button class="cool-button" onclick="showCoolMessage()">Kliknij</button>
     </div>
-
+    
+    <hr>
+    
     <div class="text">
         <h2>Coś więcej</h2>
         <p>Interesuję się matematyką, fizyką, biologią i informatyką.</p>
     </div>
+    
+    <hr>
+    
     <h2>"Memy o informatyce"</h2> 
     <div class="image-grid" class="text">
         <p></p>
@@ -231,7 +234,6 @@
 
         let currentIndex = 0;
 
-        // Open modal with the clicked image
         images.forEach(image => {
             image.addEventListener('click', () => {
                 currentIndex = parseInt(image.getAttribute('data-index'));
@@ -239,36 +241,35 @@
             });
         });
 
-        // Function to open modal with a specific image
         function openModal(index) {
             modal.style.display = "block";
             modalImage.src = images[index].src;
         }
 
-        // Close the modal
+
         closeModal.addEventListener('click', () => {
             modal.style.display = "none";
         });
 
-        // Navigate to previous image
+
         leftNav.addEventListener('click', () => {
             currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
             openModal(currentIndex);
         });
 
-        // Navigate to the next image
+
         rightNav.addEventListener('click', () => {
             currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
             openModal(currentIndex);
         });
     </script>
 <script>
-  // Fade in effect on page load
+
   window.addEventListener('load', function() {
     document.body.classList.add('loaded');
   });
 
-  // Fade out effect before the page changes
+
   document.querySelectorAll('a').forEach(function(link) {
     link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -279,7 +280,7 @@
 
       setTimeout(function() {
         window.location.href = href;
-      }, 500); // Match the transition time
+      }, 500); 
     });
   });
 </script>
